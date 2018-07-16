@@ -42,6 +42,7 @@ open class WebViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var error: UIView!
     @IBOutlet weak var errorMessage: UILabel!
+    
     @IBOutlet weak var webViewContainer: UIView!
 
     open private(set) var webView: WKWebView!
@@ -55,7 +56,9 @@ open class WebViewController: UIViewController {
     private lazy var appUrls: AppUrls = AppUrls()
     private lazy var httpsUpgrade = HTTPSUpgrade()
     private lazy var tld = TLD()
+    private let bloom = BloomFilterWrapper()
 
+    
     public var name: String? {
         return webView.title
     }
@@ -379,6 +382,8 @@ extension WebViewController: WKNavigationDelegate {
             reissueSearchWithStatsParams(for: url)
             return .cancel
         }
+
+        bloom.checkEntry(url.host)
 
         if !failingUrls.contains(url.host ?? ""),
             navigationAction.isTargettingMainFrame(),

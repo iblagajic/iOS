@@ -28,7 +28,14 @@
 		8390447620BDCE10006461CD /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8390446C20BDCE10006461CD /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		839F46B620DD9D31003B8A66 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839F46B520DD9D31003B8A66 /* FeedbackViewController.swift */; };
 		83A23D6320DC330000051F39 /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A23D6220DC330000051F39 /* Feedback.storyboard */; };
+		83A9887020F8E423000AA5CB /* BloomFilterData.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A9886F20F8E423000AA5CB /* BloomFilterData.h */; };
 		83B8BDAF20AB14A70076D6A1 /* APIHeadersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8BDAD20AB0DA90076D6A1 /* APIHeadersTests.swift */; };
+		83B9909120F61083000224B7 /* BloomFilterWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83B9909020F61083000224B7 /* BloomFilterWrapper.mm */; };
+		83B9909320F61A79000224B7 /* BloomFilterWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 83B9909220F610A4000224B7 /* BloomFilterWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83B990A520F788B1000224B7 /* BloomFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 83B990A420F788B0000224B7 /* BloomFilter.hpp */; };
+		83C7B5A520FBCE4300E69F30 /* BloomFilterData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C7B5A420FBCE4300E69F30 /* BloomFilterData.mm */; };
+		83C7B5B020FC0C0C00E69F30 /* bloom_https_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 83C7B5AE20FC0C0C00E69F30 /* bloom_https_data.txt */; };
+		83C7B5B320FC0CAB00E69F30 /* bloom_top_sites.txt in Resources */ = {isa = PBXBuildFile; fileRef = 83C7B5B220FC0CAB00E69F30 /* bloom_top_sites.txt */; };
 		83D306A41F6D500B00ED7CE2 /* tosdr.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D306A31F6D500B00ED7CE2 /* tosdr.json */; };
 		83D4A73720E1272F003A7A6D /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4A73620E1272F003A7A6D /* FeedbackModel.swift */; };
 		83DBCA7B1F7BBB5000DFD170 /* TopSitesReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBCA7A1F7BBB5000DFD170 /* TopSitesReport.swift */; };
@@ -437,7 +444,14 @@
 		8390447320BDCE10006461CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		839F46B520DD9D31003B8A66 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		83A23D6220DC330000051F39 /* Feedback.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feedback.storyboard; sourceTree = "<group>"; };
+		83A9886F20F8E423000AA5CB /* BloomFilterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloomFilterData.h; sourceTree = "<group>"; };
 		83B8BDAD20AB0DA90076D6A1 /* APIHeadersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeadersTests.swift; sourceTree = "<group>"; };
+		83B9909020F61083000224B7 /* BloomFilterWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BloomFilterWrapper.mm; sourceTree = "<group>"; };
+		83B9909220F610A4000224B7 /* BloomFilterWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BloomFilterWrapper.h; sourceTree = "<group>"; };
+		83B990A420F788B0000224B7 /* BloomFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BloomFilter.hpp; sourceTree = "<group>"; };
+		83C7B5A420FBCE4300E69F30 /* BloomFilterData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BloomFilterData.mm; sourceTree = "<group>"; };
+		83C7B5AE20FC0C0C00E69F30 /* bloom_https_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bloom_https_data.txt; sourceTree = "<group>"; };
+		83C7B5B220FC0CAB00E69F30 /* bloom_top_sites.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bloom_top_sites.txt; sourceTree = "<group>"; };
 		83D306A31F6D500B00ED7CE2 /* tosdr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tosdr.json; sourceTree = "<group>"; };
 		83D4A73620E1272F003A7A6D /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
 		83DBCA781F7BBB5000DFD170 /* TopSitesReport.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopSitesReport.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1225,6 +1239,13 @@
 				85C271DE1FD044D7007216B4 /* HTTPSUpgradePersistence.swift */,
 				85C271D71FD0311A007216B4 /* HTTPSUpgradeStore.swift */,
 				85B718F31FD071E50031A14F /* HTTPSUpgrade.xcdatamodeld */,
+				83B9909220F610A4000224B7 /* BloomFilterWrapper.h */,
+				83B9909020F61083000224B7 /* BloomFilterWrapper.mm */,
+				83A9886F20F8E423000AA5CB /* BloomFilterData.h */,
+				83C7B5A420FBCE4300E69F30 /* BloomFilterData.mm */,
+				83B990A420F788B0000224B7 /* BloomFilter.hpp */,
+				83C7B5AE20FC0C0C00E69F30 /* bloom_https_data.txt */,
+				83C7B5B220FC0CAB00E69F30 /* bloom_top_sites.txt */,
 			);
 			name = HTTPSUpgrade;
 			sourceTree = "<group>";
@@ -1994,6 +2015,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B990A520F788B1000224B7 /* BloomFilter.hpp in Headers */,
+				83B9909320F61A79000224B7 /* BloomFilterWrapper.h in Headers */,
+				83A9887020F8E423000AA5CB /* BloomFilterData.h in Headers */,
 				F143C2E81E4A4CD400CFDE3A /* Core.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2395,9 +2419,11 @@
 				856D57C5206568BE000170B5 /* tlds.json in Resources */,
 				85047B8A1F69692C002A95D8 /* contentblocker.js in Resources */,
 				85B5470D1FE852CE0008E1E5 /* bloom-filter-packed-es2015.js in Resources */,
+				83C7B5B320FC0CAB00E69F30 /* bloom_top_sites.txt in Resources */,
 				85047B881F6966ED002A95D8 /* disconnectme.js in Resources */,
 				83D306A41F6D500B00ED7CE2 /* tosdr.json in Resources */,
 				85F1C3C61F7A4C7500161346 /* easylist-cached.js in Resources */,
+				83C7B5B020FC0C0C00E69F30 /* bloom_https_data.txt in Resources */,
 				85F1C3C81F7A4C7500161346 /* messaging.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2706,6 +2732,7 @@
 				F18326871E60542100240060 /* JavascriptLoader.swift in Sources */,
 				857065761F6ADCF70044DCB1 /* EasylistStore.swift in Sources */,
 				F143C3461E4AA32D00CFDE3A /* SearchBarExtension.swift in Sources */,
+				83B9909120F61083000224B7 /* BloomFilterWrapper.mm in Sources */,
 				85C271DD1FD04459007216B4 /* HTTPSUpgrade.swift in Sources */,
 				F1B745221E549D550072547E /* UIColorExtension.swift in Sources */,
 				F143C33B1E4A9A9200CFDE3A /* WebEventsDelegate.swift in Sources */,
@@ -2752,6 +2779,7 @@
 				857065681F6AADC40044DCB1 /* DisconnectMeTracker.swift in Sources */,
 				85F1C3CA1F7A4E8000161346 /* ContentBlockerStringCache.swift in Sources */,
 				F16956421ECCA3D4009C35C9 /* ContentBlockerConfigurationUserDefaults.swift in Sources */,
+				83C7B5A520FBCE4300E69F30 /* BloomFilterData.mm in Sources */,
 				85200FA11FBC5BB5001AF290 /* DDGPersistenceContainer.swift in Sources */,
 				F1722BC91E8BE2AB0058AAA5 /* BookmarkStore.swift in Sources */,
 				830C37631F6C482E00E317A7 /* TermsOfServiceListParser.swift in Sources */,
