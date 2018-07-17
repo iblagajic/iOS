@@ -29,13 +29,7 @@
 
 - (void)addData
 {
-    // Real data
     NSArray* data = [BloomFilterData httpsTestData];
-
-    // Test data for when I really just want to check bloom performance against a million sites!
-    // Data is completely bogus
-    // NSArray* data = [BloomFilterData topSitesTestData];
-    
     for (int i=0; i<data.count; i++) {
         filter->add([data[i] UTF8String]);
     }
@@ -60,8 +54,8 @@
     int falseNegatives = 0;
     int trueNegatives = 0;
 
-    NSArray* bloomData = [BloomFilterData topSitesTestData];
-    NSArray* testData = [BloomFilterData httpsTestData];
+    NSArray* bloomData = [BloomFilterData httpsTestData];
+    NSArray* testData = [BloomFilterData topSitesTestData];
     
     for(int i=0; i<testData.count; i++) {
     
