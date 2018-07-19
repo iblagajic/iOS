@@ -21,11 +21,12 @@
 -(instancetype)init
 {
     self = [super init];
-    filter = new BloomFilter();
-    [self addData];
+    NSArray* data = [BloomFilterData httpsTestData];
+    filter = new BloomFilter((unsigned int) data.count, 0.0001);
+    [self addData: data];
     [self exportData];
-    
-    //[self runTests];
+    [self importData];
+    [self runTests];
     return self;
 }
 
@@ -33,6 +34,7 @@
 {
     NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
+    NSLog(@"Bloom: Importing data from %@", path);
     filter = new BloomFilter([path cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
@@ -40,12 +42,12 @@
 {
     NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
+    NSLog(@"Bloom: Exporting data to %@", path);
     filter->exportToFile([path cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (void)addData
+- (void)addData:(NSArray*)data
 {
-    NSArray* data = [BloomFilterData httpsTestData];
     for (int i=0; i<data.count; i++) {
         filter->add([data[i] UTF8String]);
     }
@@ -97,6 +99,7 @@
     NSLog(@"True positive %d", truePositives);
     NSLog(@"False negative %d", falseNegatives);
     NSLog(@"True negative %d", trueNegatives);
+    NSLog(@"False positive rate %lu", falsePositives / testData.count);
 }
 
 @end
