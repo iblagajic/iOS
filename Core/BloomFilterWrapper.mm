@@ -24,8 +24,23 @@
     filter = new BloomFilter();
     [self addData];
     [self exportData];
+    
     //[self runTests];
     return self;
+}
+
+-(void)importData
+{
+    NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
+    filter = new BloomFilter([path cStringUsingEncoding:NSUTF8StringEncoding]);
+}
+
+-(void)exportData
+{
+    NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
+    filter->exportToFile([path cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 - (void)addData
@@ -49,13 +64,8 @@
     return result;
 }
 
--(void)exportData {
-    NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
-    filter->exportToFile(path.cString);
-}
-
--(void)runTests {
+-(void)runTests
+{
     int falsePositives = 0;
     int truePositives = 0;
     int falseNegatives = 0;
