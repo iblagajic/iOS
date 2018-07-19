@@ -23,6 +23,7 @@
     self = [super init];
     filter = new BloomFilter();
     [self addData];
+    [self exportData];
     //[self runTests];
     return self;
 }
@@ -46,6 +47,12 @@
     double totalTime = endTime - startTime;
     NSLog(@"Bloom: Site %@ %s be updated. Lookup took %f", entry, (result ? "can" : "cannot"), totalTime);
     return result;
+}
+
+-(void)exportData {
+    NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
+    filter->exportToFile(path.cString);
 }
 
 -(void)runTests {
