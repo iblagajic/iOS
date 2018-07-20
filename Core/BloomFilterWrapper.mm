@@ -36,7 +36,7 @@
     NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
     NSLog(@"Bloom: Importing data from %@", path);
-    filter = new BloomFilter([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    filter = new BloomFilter([path cStringUsingEncoding:NSUTF8StringEncoding], 2900000);
 }
 
 -(void)exportData
@@ -44,7 +44,7 @@
     NSString *documentdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [documentdir stringByAppendingPathComponent:@"bloomFilter.bin"];
     NSLog(@"Bloom: Exporting data to %@", path);
-    filter->exportToFile([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    filter->writeToFile([path cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 - (void)addData:(NSArray*)data
@@ -89,6 +89,7 @@
         BOOL result = filter->contains([site UTF8String]);
         if (result == false && [bloomData containsObject:site]) {
             falseNegatives++;
+            NSLog(@"Bloom %d: Site %@ was a false negative. This is unexpected!!", i, site);
         }
         else if (result == false && ![bloomData containsObject:site]) {
             trueNegatives++;
