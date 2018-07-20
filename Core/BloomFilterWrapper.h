@@ -10,5 +10,5 @@
 
 @interface BloomFilterWrapper : NSObject
 - (BOOL)checkEntry:(NSString*) entry;
-- (void)runTests;
+- (void)runValidationTests;
 @end

@@ -24,9 +24,10 @@
     NSArray* data = [BloomFilterData httpsTestData];
     filter = new BloomFilter((unsigned int) data.count, 0.0001);
     [self addData: data];
-    [self exportData];
-    [self importData];
-    [self runTests];
+    
+    [self runImportExportTests];
+    [self runValidationTests];
+    
     return self;
 }
 
@@ -66,7 +67,13 @@
     return result;
 }
 
--(void)runTests
+-(void)runImportExportTests
+{
+    [self exportData];
+    [self importData];
+}
+
+-(void)runValidationTests
 {
     int falsePositives = 0;
     int truePositives = 0;

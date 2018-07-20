@@ -8,6 +8,7 @@ private:
     unsigned int hashRounds;
     std::vector<bool> bloomVector;
     std::vector<bool> importFromFile(std::string path);
+    std::vector<bool> importFromBase64File(std::string path);
     unsigned int calculateHashRounds(unsigned int size, unsigned int items);
     unsigned int djb2Hash(std::string text);
     unsigned int sdbmHash(std::string text);
